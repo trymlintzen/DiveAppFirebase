@@ -1,0 +1,6 @@
+framework module Pods_DiveAppFirebase {
+  umbrella header "Pods-DiveAppFirebase-umbrella.h"
+
+  export *
+  module * { export * }
+}
