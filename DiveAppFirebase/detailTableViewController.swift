@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class detailTableViewController: UITableViewController {
 
@@ -15,7 +16,6 @@ class detailTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        DiveAppService.sharedInstance.getDiveAppData()
         let divingNib = UINib(nibName: "DetailTableViewCell", bundle: nil)
         self.tableView.register(divingNib, forCellReuseIdentifier: TableCellIDs.detailTableViewCellID)
         
@@ -26,6 +26,20 @@ class detailTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        let cell = tableView.cellForRow(at: IndexPath.init(row: 0 , section: 0)) as! DetailTableViewCell
+        
+        selectedDiveAppItemDetail?.name = (cell.nameLabel?.text)!
+        selectedDiveAppItemDetail?.ocean = cell.oceanLabel.text!
+        selectedDiveAppItemDetail?.id = cell.idLabel.text!
+        if let depth = Int(cell.depthMetresLabel.text!) {
+            selectedDiveAppItemDetail?.depthMetres = depth
+            DiveAppService.sharedInstance.changeDiveItem(diveItem: selectedDiveAppItemDetail!)
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -54,11 +68,11 @@ class detailTableViewController: UITableViewController {
         if let depthMetres = selectedDiveAppItemDetail?.depthMetres {
             cell.depthMetresLabel.text = "\(depthMetres)"
         }
-//        let url = URL(string: (selectedShoppingItem?.photoUrlString)!)
-//        cell.ItemImage.kf.setImage(with: url)
+        let url = URL(string: (selectedDiveAppItemDetail?.imageURLS[0])!)
+        cell.imageField.kf.setImage(with: url)
         return cell
     }
-
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

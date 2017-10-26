@@ -10,9 +10,9 @@ import UIKit
 
 class DetailTableViewCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var oceanLabel: UILabel!
-    @IBOutlet weak var depthMetresLabel: UILabel!
-    @IBOutlet weak var idLabel: UILabel!
+    @IBOutlet weak var oceanLabel: UITextField!
+    @IBOutlet weak var depthMetresLabel: UITextField!
+    @IBOutlet weak var idLabel: UITextField!
     @IBOutlet weak var imageField: UIImageView!
     
     override func awakeFromNib() {

@@ -12,7 +12,7 @@ struct DiveAppProperties: Codable {
     
     var name: String
     var id: String
-//    var imageURLS: [String]
+    var imageURLS: [String]
     var depthMetres: Int
     var ocean : String
     

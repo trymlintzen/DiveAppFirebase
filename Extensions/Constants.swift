@@ -19,6 +19,8 @@ struct seguesIdentifiers {
 
 struct notificationIDs {
     static let allItemsID = "allItemdID"
+    static let addItemsID = "addItemdID"
+    static let changeItemsID = "changeItemsID"
 }
 
 struct dictKey {

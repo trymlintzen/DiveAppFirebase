@@ -10,6 +10,9 @@ target 'DiveAppFirebase' do
 pod 'Firebase/Core'
 pod 'Firebase/Database'
 pod 'Firebase'
+pod 'Kingfisher', '~> 4.0'
+pod 'SVProgressHUD'
+
 
   target 'DiveAppFirebaseTests' do
     inherit! :search_paths
